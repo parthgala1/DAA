@@ -1,24 +1,6 @@
 #include <stdio.h>
 int start[100], end[100];
 
-// void Sort(int s[], int n)
-// {
-//     int i, j;
-//     for (i = 0; i < n - 1; i++)
-//     {
-//         for (j = i + 1; j < n; j++)
-//         {
-//             if (s[j] > s[j + 1])
-//             {
-//                 // Swap the elements
-//                 int temp = s[j];
-//                 s[j] = s[i];
-//                 s[i] = temp;
-//             }
-//         }
-//     }
-// }
-
 void Activity(int s[], int e[], int n)
 {
     int i, j, counter = 1;
@@ -55,7 +37,10 @@ void main()
     {
         scanf("%d", &end[i]);
     }
-    // Sort(start, n);
-    // Sort(end, n);
+
+    // start[]  =  {1, 3, 0, 5, 8, 5}, finish[] =  {2, 4, 6, 7, 9, 9};
+    // The selected Activities are:
+    // 0       1       3       4
+    // Counter: 6
     Activity(start, end, n);
 }
