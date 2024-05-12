@@ -66,19 +66,19 @@ int main()
     for (i = 0; i < n; i++)
     {
         select[i] = 0;
-        printf("%d\t", profit[i]);
+        // printf("%d\t", profit[i]);
     }
-    printf("\n");
+    // printf("\n");
 
     // Weights
-    for (i = 0; i < n; i++)
-        printf("%d\t", weight[i]);
-    printf("\n");
+    // for (i = 0; i < n; i++)
+    //     printf("%d\t", weight[i]);
+    // printf("\n");
 
     // Ratio = Profit/Weight
-    for (i = 0; i < n; i++)
-        printf("%.2f\t", ratio[i]);
-    printf("\n");
+    // for (i = 0; i < n; i++)
+    //     printf("%.2f\t", ratio[i]);
+    // printf("\n");
 
     for (i = 0; i < n; i++)
     {
@@ -93,15 +93,17 @@ int main()
             break;
         }
         // Capacity
-        printf("%d\t", capacity);
+        // printf("%d\t", capacity);
     }
-    printf("\n");
+    // printf("\n");
     for (i = 0; i < n; i++)
     {
         total_profit += select[i] * profit[i];
         // Select
-        printf("%.2f\t", select[i]);
+        // printf("%.2f\t", select[i]);
     }
 
     printf("\nTotal Profit in fractional Knapsack problem is: %.4f", total_profit);
 }
+
+// Time Comlexity: O(N*logN)

@@ -44,3 +44,5 @@ void main()
     // Counter: 6
     Activity(start, end, n);
 }
+
+// Time Comlexity: O(N)

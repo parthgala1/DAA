@@ -1,81 +1,82 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool isSafe(int board[][8], int row, int col, int n)
+#define MAX 100
+
+int N;
+
+bool isSafe(int board[N][N], int row, int col)
 {
-    for (int i = 0; i < col; i++)
+    int i, j;
+
+    // Check if there's a queen in the same row to the left
+    for (i = 0; i < col; i++)
     {
         if (board[row][i])
-        {
             return false;
-        }
     }
-    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--)
+
+    // Check upper diagonal on left side
+    for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
     {
         if (board[i][j])
-        {
             return false;
-        }
     }
-    for (int i = row, j = col; i < n && j >= 0; i++, j--)
+
+    // Check lower diagonal on left side
+    for (i = row, j = col; j >= 0 && i < N; i++, j--)
     {
         if (board[i][j])
-        {
             return false;
-        }
     }
+
     return true;
 }
 
-bool nQueens(int board[][8], int col, int n)
+void printBoard(int board[N][N])
 {
-    if (col >= n)
+    for (int i = 0; i < N; i++)
     {
-        return true;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        if (isSafe(board, i, col, n))
+        for (int j = 0; j < N; j++)
         {
-            board[i][col] = 1;
-            if (nQueens(board, col + 1, n))
-            {
-                return true;
-            }
-            board[i][col] = 0;
+            printf("%d ", board[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void nQueens(int board[N][N], int col)
+{
+    if (col >= N)
+    {
+        printBoard(board);
+        return;
+    }
+
+    for (int i = 0; i < N; i++)
+    {
+        if (isSafe(board, i, col))
+        {
+            board[i][col] = 1; // Place queen
+            nQueens(board, col + 1);
+            board[i][col] = 0; // Backtrack
         }
     }
-    return false;
 }
 
 int main()
 {
-    int n;
-    printf("Enter the number of queens: ");
-    scanf("%d", &n);
-    int board[n][n];
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
+    int board[MAX][MAX];
+    printf("Enter the number of Queens: ");
+    scanf("%d", &N);
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
             board[i][j] = 0;
-        }
-    }
-    if (nQueens(board, 0, n))
-    {
-        printf("Solution exists\n");
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < n; j++)
-            {
-                printf("%d ", board[i][j]);
-            }
-            printf("\n");
-        }
-    }
-    else
-    {
-        printf("Solution does not exist\n");
-    }
+
+    printf("All solutions for 4 queens problem:\n");
+    nQueens(board, 0);
     return 0;
 }
+
+// Time Comllexity: O(N!)

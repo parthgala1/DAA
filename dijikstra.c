@@ -84,3 +84,21 @@ int main()
 
     return 0;
 }
+
+// 0 7 9 0 0 14
+// 7 0 10 15 0 0
+// 9 10 0 11 0 2
+// 0 15 11 0 6 0
+// 0 0 0 6 0 9
+// 14 0 2 0 9 0
+
+// Enter the source vertex: 0
+// Vertex  Distance from Source
+// 0               0
+// 1               7
+// 2               9
+// 3               20
+// 4               20
+// 5               11
+
+// Time Complexity: O(E * logV)
